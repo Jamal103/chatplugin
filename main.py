@@ -17,7 +17,7 @@ class MyPlugin(Star):
         message_chain = event.get_messages() # 用户所发的消息的消息链 # from astrbot.api.message_components import *
         logger.info(message_chain)
         yield event.plain_result(f"Hello, {user_name}, 你发了啥的 {message_str}!") # 发送一条纯文本消息
-        while (true) :
+        while True :
             yield event.plain_result(f"Hello, {user_name}, 你又又有发了啥的 {message_str}!") # 发送一条纯文本消息
             time.sleep(60)
             
