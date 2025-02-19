@@ -1,6 +1,7 @@
 from astrbot.api.event import filter, AstrMessageEvent, MessageEventResult
 from astrbot.api.star import Context, Star, register
 from astrbot.api import logger
+import time
 
 @register("helloworld", "Your Name", "一个简单的 Hello World 插件", "1.0.0", "repo url")
 class MyPlugin(Star):
@@ -15,4 +16,8 @@ class MyPlugin(Star):
         message_str = event.message_str # 用户发的纯文本消息字符串
         message_chain = event.get_messages() # 用户所发的消息的消息链 # from astrbot.api.message_components import *
         logger.info(message_chain)
+        while (true) :
+            yield event.plain_result(f"Hello, {user_name}, 你发了啥的 {message_str}!") # 发送一条纯文本消息
+            time.sleep(60)
+            
         yield event.plain_result(f"Hello, {user_name}, 你发了啥的 {message_str}!") # 发送一条纯文本消息
